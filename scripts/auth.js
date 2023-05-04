@@ -1,4 +1,5 @@
 import firebase from "./firebase.js";
+// import setupGuides from "./index.js";
 import {
   getAuth,
   onAuthStateChanged,
@@ -6,27 +7,17 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "https://www.gstatic.com/firebasejs/9.21.0/firebase-auth.js";
-import {
-  getFirestore,
-  collection,
-  getDocs,
-} from "https://www.gstatic.com/firebasejs/9.21.0/firebase-firestore.js";
+import setupGuides from "./index.js";
 
 // Initialize Firebase Authentication and get a reference to the service
 const auth = getAuth(firebase);
 
-const db = getFirestore(firebase);
-
-const querySnapshot = await getDocs(collection(db, "guides"));
-querySnapshot.forEach((doc) => {
-  console.log(doc.id, " => ", doc.data());
-});
-
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    console.log("User logged in:", user);
+    // console.log("User logged in:", user);
+    setupGuides();
   } else {
-    console.log("User logged out");
+    // console.log("User logged out");
   }
 });
 
