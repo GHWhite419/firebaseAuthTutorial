@@ -1,3 +1,5 @@
+const guideList = document.querySelector('.guides');
+
 // setup materialize components
 document.addEventListener('DOMContentLoaded', function() {
 
